@@ -1,0 +1,45 @@
+<div class="container mt-3 col-md-6 offset-md-3" >
+    <table class="table">
+        
+    <thead class="table-dark">
+        <tr>
+            
+            <th>Matiere</th>
+            <th>OP</th>
+           
+           
+           
+        </tr>
+
+
+     </thead>
+     <tbody>
+        <tr *ngFor="let d of domains">
+           
+            <td>
+                {{d.domain_name}}
+            </td>
+           
+            
+
+
+         
+
+            <td class="table-active" style="text-align: center;" >
+           
+                <button   class="btn btn-outline-success" routerLink="/depots/{{d.domain_name}}">
+              <a >  Depots</a> 
+                </button>
+             
+            </td>
+
+
+
+
+
+
+
+        </tr>
+     </tbody>
+</table>
+</div>

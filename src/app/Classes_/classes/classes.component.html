@@ -1,0 +1,120 @@
+
+
+<div class="container">
+    
+    <ng-template [ngIf]="!etudiant">  
+
+<nav class="p-2 m-2 ">
+    <button class="btn btn-info" (click)="handleNewClasse()">
+        Add class
+    </button>
+    <button class="btn btn-dark" style="margin: 10px;" routerLink="">
+       Home
+    </button>
+</nav>
+</ng-template>
+    <ng-template #errors>
+        {{errorMessage}}
+
+    </ng-template>
+
+
+
+    <div class="card" *ngIf="classes" else errors>
+    
+    <div class="card-header">
+        Classe
+    </div>
+    
+    <div class="card-body">
+
+
+    <form [formGroup]="searchFormGroup" (click)="handleSearchClasses()" style="margin: 20px;">
+        <div class="input-group">
+            <label class="input-group-text">Search</label>
+            <input type ="text" class="form-control" formControlName="keyword">
+            <button class="btn btn-secondary">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    
+    <table class="table">
+    
+        <thead class="table-dark">
+            <tr>
+                
+                <th>Name</th>
+                <th>Classe Grade</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+    
+    
+         </thead>
+         <tbody>
+            <tr *ngFor="let c of classes">
+              
+                <td>
+                    {{c.name}}
+                </td>
+                <td>
+               {{c.classeGrade}}
+               
+                </td>
+                
+                <td class="table-active" style="text-align: center;">
+                   
+                    <button  (click)="handleGoToDomain(c.classeGrade)" class="btn btn-outline-success">
+                        Matieres
+                    </button>
+                </td>
+                <ng-template [ngIf]="!etudiant"> 
+                <td class="table-active" style="text-align: center;">
+                   
+                    <button  (click)="handleDeleteClasse(c)" class="btn btn-danger">
+                        <i class="bi bi-trash "></i>
+                    </button>
+                </td>
+
+                <td class="table-active" style="text-align: center;">
+                   
+                    <button  (click)="handleEditClasse(c)" class="btn btn-warning">
+                        <i class="bi bi-pen "></i>
+                    </button>
+                </td>
+
+            </ng-template>
+
+
+
+
+
+
+    
+            </tr>
+         </tbody>
+    </table>
+    <div class="btn-group me-2" role="group" aria-label="First group">
+    <ul class="nav nav-pills">
+        <li      *ngFor="let item of [].constructor(this.totalPages) ; let i = index">
+     <a (click)="gotoPage(i+1)"    [ngClass]="i+1==currentPage? 'btn-secondary':' btn-outline-secondary'" style="color: black;"  class="btn ms-2 mt-3">{{i}}</a>
+        </li>
+    </ul>
+    </div>
+    
+    </div>
+    
+    
+    </div>
+    
+    </div>
+    

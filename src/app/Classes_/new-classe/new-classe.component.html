@@ -1,0 +1,49 @@
+<div class="container mt-3 col-md-6 offset-md-3" >
+
+
+
+    <form [formGroup]="classeFormGroup" (ngSubmit)="handleAddClasse()">
+
+     <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" formControlName="name" class="form-control" >
+
+        <small     
+        
+        *ngIf="classeFormGroup.controls['name'].errors &&  classeFormGroup.controls['name'].touched"
+         class="text-danger" >
+
+      
+         {{classeService.getErrorMessage('Name' , classeFormGroup.controls['name'].errors)}}
+
+
+
+        </small>
+
+     </div>
+
+     <div class="mb-3">
+
+        
+        <label  class="form-label">Grade Classe</label>
+        <input type="text" formControlName="classeGrade" class="form-control" >
+
+        <small     
+        
+        *ngIf="classeFormGroup.controls['classeGrade'].errors &&  classeFormGroup.controls['classeGrade'].touched"
+         class="text-danger" >
+
+      
+         {{classeService.getErrorMessage('Class Grade' , classeFormGroup.controls['classeGrade'].errors)}}
+
+
+
+        </small>
+
+
+
+     </div>
+     <button [disabled]="classeFormGroup.invalid" class="btn btn-info" type="submit">Add</button>
+
+    </form>
+</div>

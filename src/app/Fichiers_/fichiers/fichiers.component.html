@@ -1,0 +1,124 @@
+
+<div class="container">
+    
+
+    <ng-template [ngIf]="!etudiant">
+    <nav class="p-3 m-1 " >
+        <h1 style="text-align: center;">Bibliothéque</h1>
+        <button class="btn btn-outline-info" (click)="handleNewFichier()">
+            Add File
+          </button>
+    
+
+        <input type="file" (change)="getFile($event)" id="actual-btn" hidden />
+
+        <label for="actual-btn"  id="choose" class="btn btn-outline-warning" style="margin: 10px;">Choose File</label>
+    
+       
+        <input type="text" (change)="getName(name.value)" #name  placeholder="Matiere" class="outline-border-secondary"   style="margin: 10px; width: 5cm;" />
+      
+        <button class="btn btn-dark" style="margin: 10px;" routerLink="">
+            Home
+         </button>
+   
+   
+    </nav>
+</ng-template>
+        <ng-template #errors>
+            {{errorMessage}}
+    
+        </ng-template>
+    
+    
+    
+        <div class="card" *ngIf="fichiers" else errors>
+        
+        <div class="card-header">
+            Files
+        </div>
+        
+        <div class="card-body">
+    
+            
+          
+        <form [formGroup]="findFormGroup" (click)="handleSearchFichiers()" style="margin: 20px;">
+        
+            <div class="input-group">
+                <label class="input-group-text">Search</label>
+                <input type ="text" class="form-control" formControlName="keyword">
+                <button class="btn btn-secondary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    
+    
+    
+    
+    
+       
+      
+    
+        
+        <table class="table">
+        
+            <thead class="table-dark">
+                <tr>
+                    <th>Matiere</th>
+                    <th>Name</th>
+                    <th>size</th>
+                    <th></th>
+                    <th></th>
+                   
+                </tr>
+        
+        
+             </thead>
+             <tbody>
+                <tr *ngFor="let f of fichiers">
+                    <td>
+                        {{f.file_matiere}}
+                    </td>
+                    <td>
+                        {{f.file_name}}
+                    </td>
+                    <td>
+                        {{f.file_size}} <p style="font-weight: bold;">KB</p>
+                    </td>
+                    
+                    <ng-template [ngIf]="!etudiant">
+    
+                    <td class="table-active" style="text-align: center;">
+                       
+                        <button   class="btn btn-danger" (click)="handleDeleteFile(f.file_name)">
+                            <i class="bi bi-trash "></i>
+                        </button>
+                    </td>
+                </ng-template>
+                    <td class="table-active" style="text-align: center;" >
+                   
+                        <button   class="btn btn-outline-success" (click)="handleDownloadfile(f.file_name)">
+                         
+                         <a href="http://localhost:8077/downloadFile/{{f.file_name}}"   >    <i class="bi bi-download "></i></a>
+                        </button>
+                     
+                    </td>
+    
+    
+    
+    
+    
+    
+        
+                </tr>
+             </tbody>
+        </table>
+      
+ 
+        </div>
+        
+        
+        </div>
+        
+        </div>
+        

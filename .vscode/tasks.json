@@ -18,6 +18,12 @@
             "regexp": "bundle generation complete"
           }
         }
+      },
+      "label": "npm: start",
+      "detail": "ng serve",
+      "group": {
+        "kind": "build",
+        "isDefault": true
       }
     },
     {
@@ -37,6 +43,13 @@
           }
         }
       }
+    },
+    {
+      "type": "npm",
+      "script": "ng",
+      "problemMatcher": [],
+      "label": "npm: ng",
+      "detail": "ng"
     }
   ]
 }
