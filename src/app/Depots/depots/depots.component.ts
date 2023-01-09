@@ -25,11 +25,12 @@ export class DepotsComponent  implements OnInit {
      currentAction : string = 'all' ; 
      type : string ="depot";
      domain! : string ;
-     user_id : string = "Malek Hellal"  ; 
+     user_id : string = ""  ; 
      file!:any ;
      isStudent : boolean = false ;
      role : String = "";
      etudiant : boolean = false ;  
+     
 
      
     
@@ -41,7 +42,7 @@ export class DepotsComponent  implements OnInit {
      ngOnInit(): void {
 
       this.role= this.fichierService.getSession();
-
+   this.user_id= this.fichierService.getName().toString();
       if (this.role == "Etudiant")
       {
        this.etudiant = true ; 

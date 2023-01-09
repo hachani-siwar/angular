@@ -10,7 +10,8 @@ import { Fichier, PageFichier } from '../model/fichier.model';
 })
 export class FichierService {
 
-  user! : String ; 
+  role! : String ; 
+  name ! : String ; 
   constructor( private http : HttpClient) {
 
    
@@ -20,18 +21,29 @@ export class FichierService {
 
 
 
- setSession (user : String)
+ setSession (role : String)
  {
- this.user = user ; 
+ this.role = role ; 
 
  }
 
 getSession () : String
 {
-  return this.user ; 
+  return this.role ; 
 
 }
 
+setName (name: String)
+ {
+ this.name = name ; 
+
+ }
+
+getName () : String
+{
+  return this.name ; 
+
+}
 
   
   getErrorMessage (filedName : string , errors : ValidationErrors) {

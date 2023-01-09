@@ -49,6 +49,7 @@ constructor (private readonly keycloak : KeycloakService , public srv : FichierS
    this.ifNotStudent =  false ; }
   
    this.srv.setSession(this.role);
+   this.srv.setName(this.userProfile?.firstName +" " + this.userProfile?.lastName);
    console.log (this.role);
    }
 
